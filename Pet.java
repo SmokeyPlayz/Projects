@@ -1,12 +1,22 @@
 // Damarcus Crowell
 // Pet.java
-// CS Assignment: First Java class - Pet blueprint
+// CS Assignment: Pet class with type, age, and speak() method
 
 public class Pet {
     private String name;
+    private String type;
+    private int age;
 
     public Pet() {
         setName("Pet Name");
+        setType("Animal");
+        setAge(1);
+    }
+
+    public Pet(String newName, String newType, int newAge) {
+        setName(newName);
+        setType(newType);
+        setAge(newAge);
     }
 
     public void setName(String newName) {
@@ -17,18 +27,40 @@ public class Pet {
         return name;
     }
 
-    public String toString() {
-        String result = "Pet information:";
-        result += "\nName: " + getName();
-        return result;
+    public void setType(String newType) {
+        type = newType;
     }
 
-    public static void main(String[] args) {
-        Pet p1 = new Pet();
-        System.out.println(p1.toString());
+    public String getType() {
+        return type;
+    }
 
-        Pet p2 = new Pet();
-        p2.setName("Kane");
-        System.out.println(p2.toString());
+    public void setAge(int newAge) {
+        age = newAge;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String speak() {
+        String sound;
+        if (getType().equals("Dog")) {
+            sound = "Woof";
+        } else if (getType().equals("Cat")) {
+            sound = "Meow";
+        } else {
+            sound = "Yowl";
+        }
+        return sound;
+    }
+
+    public String toString() {
+        String result = "Pet information:";
+        result += "\nType: " + getType();
+        result += "\nName: " + getName();
+        result += "\nSound: " + speak();
+        result += "\nAge:  " + getAge();
+        return result;
     }
 }
