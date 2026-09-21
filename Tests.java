@@ -1,18 +1,56 @@
 // Damarcus Crowell
 // Tests.java
-// CS Assignment: Calculate the average of 3 test scores
+// CS Assignment: Tests blueprint class - collects scores, computes average
+
+import java.util.Scanner;
 
 public class Tests {
-    public static void main(String[] args) {
-        double testScore1 = 88.2;
-        double testScore2 = 78.9;
-        double testScore3 = 97.6;
+    private double ave;
+    private int count;
+    private int score;
 
-        double average = (testScore1 + testScore2 + testScore3) / 3;
+    public Tests() {
+    }
 
-        System.out.println("Test score 1:  " + testScore1);
-        System.out.println("Test score 2:  " + testScore2);
-        System.out.println("Test score 3:  " + testScore3);
-        System.out.printf("The average of 3 test scores is:  %.2f%n", average);
+    public double getAve() {
+        return ave;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int newScore) {
+        score = newScore;
+    }
+
+    public void getAverage() {
+        Scanner scanner = new Scanner(System.in);
+        int sum = 0;
+        int scoreCount = 0;
+
+        System.out.println("Enter a test score (-1 to quit):");
+        setScore(scanner.nextInt());
+
+        while (getScore() != -1) {
+            sum += getScore();
+            scoreCount++;
+            System.out.println("Enter a test score (-1 to quit):");
+            setScore(scanner.nextInt());
+        }
+
+        count = scoreCount;
+        ave = (double) sum / count;
+    }
+
+    public String toString() {
+        String result = "The average of the " + getCount() + " scores entered is ";
+        result += String.format("%.2f", getAve());
+        result += ".";
+        return result;
     }
 }
